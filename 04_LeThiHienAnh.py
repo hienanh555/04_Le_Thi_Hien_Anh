@@ -48,7 +48,17 @@ def search_student(search_name):
     - Nếu không tìm thấy, in ra "Khong tim thay sinh vien nao.".
     """
     ### VIẾT CODE CỦA BẠN VÀO ĐÂY ###
-    pass  # Xóa dòng này khi bạn viết code
+    key = (search_name or "").strip().lower()
+    results = []
+    for s in student_list:
+        last_name = s["name"].strip().split()[-1].lower()
+        if last_name == key:
+            results.append(s)
+    if not results:
+        print("Khong tim thay sinh vien nao.")
+        return
+    for s in results:
+        print(f" - Ten: {s['name']}, Nam sinh: {s['year_of_birth']}, Dia chi: {s['address']}")
 
 
 # --- Phần thực thi chính để kiểm tra ---
